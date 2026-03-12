@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidade Santa Rita de Cássia | Bem-vindos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                <img src="imagens/logo.png" alt="Logo Igreja">
+                <span>
+                    COMUNIDADE<br>
+                    SANTA RITA DE CÁSSIA<br>
+                    <small>Barra Mansa - RJ</small>
+                </span>
+            </a>
+        </div>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="localizacao.html">Localização</a></li>
+                <li><a href="agenda.html">Agenda</a></li>
+                <li><a href="casamento.html">Casamentos</a></li>
+                <li><a href="batismo.html">Batizados</a></li>
+                <li><a href="catequese.html">Catequese</a></li>
+            </ul>
+            <ul class="nav-links secondary-nav">
+                <li><a href="dia_dia.html">Movimentos</a></li>
+                <li><a href="festa_santa_rita.html">Festa de Santa Rita</a></li>
+                <li><a href="corrida.html">Corrida</a></li>
+                <li><a href="doacao.html">Doação</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="Dízimo.html" class="btn-dizimo-top">DÍZIMO</a>
+
+            <a href="https://www.instagram.com/ce.staritadecassia" target="_blank" class="icon-insta-top" title="Siga-nos no Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://wa.me/5511953996121" target="_blank" class="btn-whatsapp-top">
+                <i class="fab fa-whatsapp"></i> <span>CONTATO</span>
+            </a>
+
+        </div>
+    </header>
+    
+    <main class="pagina-dizimo">
+    <section class="dizimo-intro">
+        <h1>Dízimo: Um Gesto de Gratidão</h1>
+        
+        <div class="mensagem-motivacional">
+            <p>"O dízimo não é o que sobra, é o que transborda de um coração agradecido. Ao partilhar, reconhecemos que Deus é o Senhor de todos os nossos bens e que Sua providência nunca nos abandona. Ser dizimista é dizer 'obrigado' através da partilha."</p>
+            <span class="rosa-decorativa">🌹</span>
+        </div>
+    </section>
+
+    <section class="pix-dizimo">
+    <h3>Seja um Dizimista</h3>
+    <p>Contribua com a nossa comunidade através do PIX:</p>
+    
+    <div class="qr-code-container">
+        <img src="imagens/dizimo/qrcode-pix.png" alt="QR Code PIX Dízimo" class="qr-code-img">
+        
+        <div class="chave-pix-box">
+            <small>Chave CPF (Toque para copiar):</small>
+            <div class="copiar-pix" onclick="copiarPix()">
+                <strong id="chave-cpf">842.603.437-34</strong>
+                <span class="icon-copy">📋</span>
+            </div>
+        </div>
+    </div>
+    </section>
+</main>
+
+   <footer>
+    <p>&copy; 2026 Comunidade Santa Rita de Cássia. Todos os direitos reservados.</p>
+    <div class="social-links">
+        <a href="https://www.facebook.com/santaritadecassia.barramansa.5" target="_blank" title="Siga-nos no Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        
+        <a href="https://www.instagram.com/ce.staritadecassia" target="_blank" title="Siga nosso Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</footer>
+<script>
+    // --- Função Copiar PIX Dízimo (Nome corrigido para bater com o HTML) ---
+    function copiarPix() {
+        // Buscamos o ID correto "chave-cpf" que está no seu HTML
+        const elementoChave = document.getElementById("chave-cpf");
+        
+        if (!elementoChave) {
+            console.error("Erro: Elemento 'chave-cpf' não encontrado.");
+            return;
+        }
+
+        const textoOriginal = elementoChave.innerText;
+        // Limpa pontos e traços para não dar erro no app do banco
+        const chaveLimpa = textoOriginal.replace(/\D/g, '');
+
+        // Tenta o método moderno
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(chaveLimpa).then(() => {
+                alert("Chave PIX do Dízimo copiada! (Apenas números)");
+            }).catch(err => {
+                fallbackCopiar(chaveLimpa);
+            });
+        } else {
+            fallbackCopiar(chaveLimpa);
+        }
+    }
+
+    // Função de segurança para navegadores que bloqueiam o clipboard
+    function fallbackCopiar(texto) {
+        const textArea = document.createElement("textarea");
+        textArea.value = texto;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert("Chave copiada com sucesso!");
+        } catch (err) {
+            alert("Erro ao copiar. Por favor, anote o número: " + texto);
+        }
+        document.body.removeChild(textArea);
+    }
+</script>
+</body>
+</html>
