@@ -1255,20 +1255,19 @@ summary {
 }
 
 /* ==========================================================
-   VERSÃO FINAL CORRETIVA - MENU E CARDS RESPONSIVOS
+   VERSÃO CONSOLIDADA FINAL: MENU + IMAGENS RESPONSIVAS
    ========================================================== */
 
 @media (max-width: 768px) {
-    /* 1. FORÇAR EXIBIÇÃO DO MENU LOGO ABAIXO DO LOGO */
-    .navbar {
+    /* 1. NAVBAR E MENU (O QUE JÁ ESTÁ FUNCIONANDO) */
+    header.navbar, .navbar {
         flex-direction: column !important;
         height: auto !important;
-        padding: 10px !important;
+        padding: 15px 5% !important;
         display: flex !important;
     }
 
-    /* Força a lista de links a aparecer (anula qualquer display:none anterior) */
-    .nav-links, ul.nav-links, nav.nav-links {
+    ul.nav-links, .nav-links {
         display: flex !important;
         visibility: visible !important;
         flex-direction: row !important;
@@ -1277,69 +1276,86 @@ summary {
         gap: 8px !important;
         margin: 15px 0 5px 0 !important;
         padding: 0 !important;
-        list-style: none !important;
         width: 100% !important;
     }
 
-    .nav-links li {
-        margin: 0 !important;
-    }
-
-    .nav-links a {
-        display: block !important;
+    .nav-links li a {
+        display: inline-block !important;
         font-size: 0.8rem !important;
         background-color: #f0f2f5;
         padding: 6px 12px;
         border-radius: 20px;
         border: 1px solid #ddd;
         color: #333 !important;
-        text-decoration: none;
     }
 
-    /* 2. CORREÇÃO DAS IMAGENS E CARDS (NOTÍCIAS) */
-    .noticias-container, .grid-noticias, .cards-container {
+    /* 2. CORREÇÃO DAS IMAGENS CORTADAS NA PÁGINA PRINCIPAL */
+    /* Força todas as imagens a não estourarem a largura da tela */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 3. AJUSTE DE CONTAINERS DE CARDS (NOTÍCIAS E DESTAQUES) */
+    .noticias-container, 
+    .grid-noticias, 
+    .cards-container, 
+    .galeria,
+    .destaques-igreja,
+    .container-flex {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: column !important; /* Empilha um embaixo do outro */
         align-items: center !important;
         width: 100% !important;
-        padding: 0 !important;
+        padding: 0 15px !important;
+        gap: 20px !important;
     }
 
-    .card, .item-noticia, .carousel-item {
-        width: 95% !important; /* Quase toda a largura da tela */
-        max-width: none !important;
-        margin: 10px auto !important;
-        min-width: 0 !important;
-    }
-
-    .card img, .item-noticia img {
+    /* 4. AJUSTE DOS CARDS INDIVIDUAIS */
+    .card, 
+    .item-noticia, 
+    .carousel-item,
+    .item-destaque {
         width: 100% !important;
-        height: auto !important; /* Mantém a proporção da foto */
-        object-fit: cover;
-        border-radius: 10px;
+        max-width: 100% !important; /* Faz o card ocupar a largura disponível */
+        margin: 0 auto 20px auto !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 12px;
+        overflow: hidden; /* Garante que a imagem respeite as bordas do card */
     }
 
-    /* 3. AJUSTES GERAIS */
-    .hero { height: 35vh !important; }
+    /* Garante que a imagem dentro do card preencha o espaço sem achatar */
+    .card img, 
+    .item-noticia img,
+    .item-destaque img {
+        width: 100% !important;
+        height: 220px !important; /* Altura padrão para os cards no mobile */
+        object-fit: cover !important; /* O segredo para não cortar nem esticar */
+        display: block;
+    }
+
+    /* 5. AJUSTES GERAIS DE INTERFACE */
+    .hero { 
+        height: 35vh !important; 
+        background-attachment: scroll !important; /* Melhora performance no celular */
+    }
     
     .logo img { height: 60px !important; }
-    
+
     .nav-actions {
-        display: flex !important;
-        justify-content: center !important;
         width: 100%;
+        justify-content: center !important;
         margin-top: 10px;
     }
-    
-    /* Esconde botões redundantes no topo */
-    .btn-dizimo-top, .btn-whatsapp-top span {
+
+    .btn-whatsapp-top span, .btn-dizimo-top {
         display: none !important;
     }
 }
 
-/* Ajuste extra para telas bem pequenas */
+/* Ajuste fino para aparelhos bem pequenos */
 @media (max-width: 480px) {
-    .nav-links a {
+    .nav-links li a {
         font-size: 0.75rem !important;
         padding: 5px 10px !important;
     }
