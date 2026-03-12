@@ -1255,28 +1255,24 @@ summary {
 }
 
 /* ==========================================================
-   VERSÃO BLINDADA: CORREÇÃO DE CARDS E BOTÃO DÍZIMO
+   AJUSTE FINAL: FORÇAR EMPILHAMENTO E EXIBIÇÃO DO DÍZIMO
    ========================================================== */
 
 @media (max-width: 768px) {
-    /* 1. NAVBAR - AJUSTE DE ESPAÇAMENTO */
+    /* 1. NAVBAR E MENU */
     .navbar {
         flex-direction: column !important;
         height: auto !important;
-        padding: 10px !important;
         display: flex !important;
     }
 
-    /* 2. MENU - LINKS EM BOTÕES ORGANIZADOS */
     .nav-links {
-        display: flex !important;
-        visibility: visible !important;
-        flex-direction: row !important;
+        display: flex !important; /* Garante que o menu não suma */
         flex-wrap: wrap !important;
         justify-content: center !important;
         gap: 8px !important;
-        margin: 15px 0 !important;
-        padding: 0 !important;
+        padding: 10px 0 !important;
+        list-style: none !important;
     }
 
     .nav-links li a {
@@ -1286,50 +1282,63 @@ summary {
         padding: 6px 12px;
         border-radius: 20px;
         color: #333 !important;
-        border: 1px solid #ddd;
     }
 
-    /* FORÇAR O BOTÃO DE DOAÇÃO A APARECER EM DESTAQUE */
-    /* Se o link tiver o texto "Doação" ou for o último da lista */
-    .nav-links li a[href*="Dizimo"], 
-    .nav-links li:last-child a {
+    /* FORÇAR BOTÃO DÍZIMO/DOAÇÃO A APARECER */
+    /* Usamos seletores variados para garantir que ele te obedeça */
+    .nav-links li:last-child a, 
+    .nav-links li a[href*="dizimo"], 
+    .nav-links li a[href*="doacao"] {
+        display: inline-block !important;
         background-color: #b22222 !important; /* Vermelho */
         color: #ffffff !important;
         font-weight: bold !important;
         border: none !important;
     }
 
-    /* 3. CARDS DE NOTÍCIAS - RESOLVENDO O CORTE DAS IMAGENS */
-    /* Forçamos o container a não usar 'flex' lateral */
+    /* 2. RESOLVENDO AS FOTOS CORTADAS (O PONTO CRÍTICO) */
+    /* Forçamos os containers a pararem de tentar colocar itens lado a lado */
     .noticias-container, 
     .grid-noticias, 
-    .carousel-container,
-    .cards-wrapper {
-        display: block !important; /* Muda de flex para block para empilhar */
+    .carousel-container, 
+    .carousel-track,
+    .cards-wrapper,
+    .destaques-igreja {
+        display: block !important; /* Mata o Flexbox/Grid que corta as fotos */
         width: 100% !important;
-        padding: 0 10px !important;
+        padding: 0 !important;
     }
 
+    /* Faz cada card/foto ocupar 100% da largura da tela */
     .card, 
     .carousel-item, 
-    .item-noticia {
+    .item-noticia,
+    .item-destaque {
         display: block !important;
-        width: 100% !important; /* Ocupa a largura total da tela */
-        margin: 0 0 30px 0 !important; /* Espaço entre um card e outro */
+        width: 95% !important; 
+        margin: 0 auto 30px auto !important; /* Centraliza e dá espaço embaixo */
         min-width: 100% !important;
-        box-sizing: border-box !important;
     }
 
+    /* Ajuste da Imagem: Para não achatar nem cortar */
     .card img, 
     .carousel-item img, 
-    .item-noticia img {
+    .item-noticia img,
+    .item-destaque img {
         width: 100% !important;
-        height: 230px !important; /* Altura fixa para manter o padrão */
-        object-fit: cover !important; /* Preenche sem achatar */
-        border-radius: 12px !important;
+        height: auto !important; /* Deixa a foto na proporção real */
+        min-height: 200px;
+        max-height: 300px;
+        object-fit: cover !important;
+        border-radius: 10px !important;
     }
 
-    /* 4. LIMPEZA DE ELEMENTOS DUPLICADOS */
+    /* 3. HERO (IMAGEM PRINCIPAL) */
+    .hero {
+        height: 300px !important;
+        background-size: cover !important;
+    }
+
+    /* 4. ESCONDER LIXO VISUAL */
     .nav-actions { display: none !important; }
-    .hero { height: 35vh !important; }
 }
