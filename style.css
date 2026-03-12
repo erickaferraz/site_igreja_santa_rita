@@ -1255,99 +1255,92 @@ summary {
 }
 
 /* ==========================================================
-   VERSÃO CONSOLIDADA: RESPONSIVIDADE TOTAL (FINAL)
+   VERSÃO FINAL CORRETIVA - MENU E CARDS RESPONSIVOS
    ========================================================== */
 
 @media (max-width: 768px) {
-    /* 1. Navbar: Força o crescimento vertical para caber os links */
-    header.navbar, .navbar {
+    /* 1. FORÇAR EXIBIÇÃO DO MENU LOGO ABAIXO DO LOGO */
+    .navbar {
         flex-direction: column !important;
         height: auto !important;
-        padding: 15px 5% !important;
+        padding: 10px !important;
         display: flex !important;
     }
 
-    /* 2. Menu: Força os links a aparecerem como botões organizados */
-    ul.nav-links, nav.nav-links, .nav-links { 
-        display: flex !important; 
+    /* Força a lista de links a aparecer (anula qualquer display:none anterior) */
+    .nav-links, ul.nav-links, nav.nav-links {
+        display: flex !important;
         visibility: visible !important;
-        opacity: 1 !important;
-        flex-direction: row !important; 
-        flex-wrap: wrap !important; 
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
         justify-content: center !important;
-        gap: 10px !important;
-        margin: 15px 0 !important;
+        gap: 8px !important;
+        margin: 15px 0 5px 0 !important;
         padding: 0 !important;
         list-style: none !important;
+        width: 100% !important;
     }
 
-    /* Estilização dos links para virarem "botões" fáceis de tocar no celular */
-    .nav-links li a {
-        display: inline-block !important;
+    .nav-links li {
+        margin: 0 !important;
+    }
+
+    .nav-links a {
+        display: block !important;
         font-size: 0.8rem !important;
-        background: #f0f2f5; /* Fundo cinza claro para destaque */
-        padding: 8px 12px;
+        background-color: #f0f2f5;
+        padding: 6px 12px;
         border-radius: 20px;
-        color: #0d1b2a !important;
-        text-decoration: none;
         border: 1px solid #ddd;
-        transition: 0.3s;
+        color: #333 !important;
+        text-decoration: none;
     }
 
-    /* 3. Ajuste de Logo e Ações */
-    .logo img {
-        height: 65px !important; /* Reduz um pouco para ganhar espaço vertical */
-        width: auto !important;
-    }
-
-    .nav-actions {
-        width: 100%;
-        justify-content: center !important;
-        margin-top: 5px;
+    /* 2. CORREÇÃO DAS IMAGENS E CARDS (NOTÍCIAS) */
+    .noticias-container, .grid-noticias, .cards-container {
         display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding: 0 !important;
     }
 
-    /* Esconde o texto longo dos botões de ação para não encavalar */
-    .btn-whatsapp-top span, .btn-dizimo-top {
-        display: none !important; 
+    .card, .item-noticia, .carousel-item {
+        width: 95% !important; /* Quase toda a largura da tela */
+        max-width: none !important;
+        margin: 10px auto !important;
+        min-width: 0 !important;
     }
 
-    /* 4. Layout de Conteúdo: Tudo em coluna única */
-    .hero { height: 40vh !important; }
+    .card img, .item-noticia img {
+        width: 100% !important;
+        height: auto !important; /* Mantém a proporção da foto */
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* 3. AJUSTES GERAIS */
+    .hero { height: 35vh !important; }
     
-    .grid-catequese, 
-    .galeria-dupla, 
-    .grade-casamento, 
-    .grade-contato, 
-    .container-flex,
-    .destaques-igreja { 
+    .logo img { height: 60px !important; }
+    
+    .nav-actions {
         display: flex !important;
-        flex-direction: column !important; 
-        grid-template-columns: 1fr !important;
-        gap: 20px !important; 
-        text-align: center !important;
+        justify-content: center !important;
+        width: 100%;
+        margin-top: 10px;
     }
-
-    .item-destaque { margin-bottom: 20px; }
-
-    /* 5. Carrossel: Ajuste para tablets */
-    .carousel-item {
-        min-width: 50% !important;
+    
+    /* Esconde botões redundantes no topo */
+    .btn-dizimo-top, .btn-whatsapp-top span {
+        display: none !important;
     }
 }
 
-/* Ajuste específico para celulares pequenos (Vertical) */
+/* Ajuste extra para telas bem pequenas */
 @media (max-width: 480px) {
-    .nav-links {
-        gap: 6px !important;
-    }
-    
-    .nav-links li a {
-        padding: 6px 10px !important; /* Diminui o respiro dos botões */
+    .nav-links a {
         font-size: 0.75rem !important;
-    }
-    
-    .carousel-item {
-        min-width: 100% !important; /* Um item por vez */
+        padding: 5px 10px !important;
     }
 }
