@@ -1255,45 +1255,65 @@ summary {
 }
 
 /* ==========================================================
-   REVISÃO ÚNICA DE RESPONSIVIDADE (Cole no final do arquivo)
+   VERSÃO CONSOLIDADA: RESPONSIVIDADE TOTAL (FINAL)
    ========================================================== */
 
 @media (max-width: 768px) {
-    /* 1. Navbar - Ajuste para não quebrar na rotação */
-    .navbar {
-        flex-direction: column; /* Empilha: Logo / Links / Botões */
-        padding: 10px 5%;
-        height: auto;
+    /* 1. Navbar: Força o crescimento vertical para caber os links */
+    header.navbar, .navbar {
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 15px 5% !important;
+        display: flex !important;
     }
 
-    /* 2. Menu - Em vez de sumir, ele fica visível e organizado */
-    .nav-links { 
-        display: flex !important; /* Força a aparecer */
-        flex-direction: row; 
-        flex-wrap: wrap; /* Se não couber na largura, ele pula linha */
-        justify-content: center;
-        gap: 10px;
-        margin: 10px 0;
-        padding: 0;
+    /* 2. Menu: Força os links a aparecerem como botões organizados */
+    ul.nav-links, nav.nav-links, .nav-links { 
+        display: flex !important; 
+        visibility: visible !important;
+        opacity: 1 !important;
+        flex-direction: row !important; 
+        flex-wrap: wrap !important; 
+        justify-content: center !important;
+        gap: 10px !important;
+        margin: 15px 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
     }
 
-    .nav-links a {
-        font-size: 0.85rem;
+    /* Estilização dos links para virarem "botões" fáceis de tocar no celular */
+    .nav-links li a {
+        display: inline-block !important;
+        font-size: 0.8rem !important;
+        background: #f0f2f5; /* Fundo cinza claro para destaque */
+        padding: 8px 12px;
+        border-radius: 20px;
+        color: #0d1b2a !important;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        transition: 0.3s;
     }
 
-    /* 3. Botões do Topo - Limpeza visual */
+    /* 3. Ajuste de Logo e Ações */
+    .logo img {
+        height: 65px !important; /* Reduz um pouco para ganhar espaço vertical */
+        width: auto !important;
+    }
+
     .nav-actions {
-        justify-content: center;
         width: 100%;
+        justify-content: center !important;
+        margin-top: 5px;
+        display: flex !important;
     }
 
-    .btn-whatsapp-top span, 
-    .btn-dizimo-top {
-        display: none !important; /* Esconde o texto/botão dízimo para ganhar espaço */
+    /* Esconde o texto longo dos botões de ação para não encavalar */
+    .btn-whatsapp-top span, .btn-dizimo-top {
+        display: none !important; 
     }
 
-    /* 4. Layout de Conteúdo - Coluna única */
-    .hero { height: 45vh; }
+    /* 4. Layout de Conteúdo: Tudo em coluna única */
+    .hero { height: 40vh !important; }
     
     .grid-catequese, 
     .galeria-dupla, 
@@ -1301,32 +1321,33 @@ summary {
     .grade-contato, 
     .container-flex,
     .destaques-igreja { 
-        display: flex;
-        flex-direction: column; 
-        grid-template-columns: 1fr;
-        gap: 20px; 
-        text-align: center;
+        display: flex !important;
+        flex-direction: column !important; 
+        grid-template-columns: 1fr !important;
+        gap: 20px !important; 
+        text-align: center !important;
     }
 
     .item-destaque { margin-bottom: 20px; }
 
-    /* 5. Carrossel - 2 itens em tablets/celulares grandes */
+    /* 5. Carrossel: Ajuste para tablets */
     .carousel-item {
-        min-width: 50%;
+        min-width: 50% !important;
     }
 }
 
-/* Ajuste fino para telas muito pequenas (iPhone antigo, etc) */
+/* Ajuste específico para celulares pequenos (Vertical) */
 @media (max-width: 480px) {
     .nav-links {
-        gap: 8px;
+        gap: 6px !important;
+    }
+    
+    .nav-links li a {
+        padding: 6px 10px !important; /* Diminui o respiro dos botões */
+        font-size: 0.75rem !important;
     }
     
     .carousel-item {
-        min-width: 100%; /* 1 item por vez */
-    }
-    
-    .logo img {
-        height: 60px; /* Reduz o logo no celular vertical */
+        min-width: 100% !important; /* Um item por vez */
     }
 }
