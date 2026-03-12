@@ -1255,78 +1255,103 @@ summary {
 }
 
 /* ==========================================================
-   VERSÃO FINAL DE AJUSTE FINO (INSTAGRAM + DÍZIMO)
+   VERSÃO FINAL CONSOLIDADA - PADRONIZADA E RESPONSIVA
    ========================================================== */
 
 @media (max-width: 768px) {
-    /* 1. NAVBAR - ORGANIZAÇÃO DO TOPO */
+    /* 1. NAVBAR - ORGANIZAÇÃO VERTICAL */
     .navbar {
         flex-direction: column !important;
         height: auto !important;
         display: flex !important;
-        padding: 10px !important;
+        padding: 15px 10px !important;
     }
 
-    /* REATIVA OS ÍCONES (INSTAGRAM/WHATS) */
-    .nav-actions {
-        display: flex !important; /* Força a aparecer */
-        justify-content: center !important;
-        gap: 20px !important;
-        margin-top: 10px !important;
-        order: 3; /* Garante que fiquem abaixo dos links */
-    }
-
-    .nav-actions a i {
-        font-size: 1.5rem !important; /* Tamanho bom para clicar no dedo */
-    }
-
-    /* 2. MENU DE LINKS - ESTILO BOTÕES */
+    /* 2. MENU DE LINKS - TODOS PADRONIZADOS (SEM DESTAQUE) */
     .nav-links {
         display: flex !important;
+        visibility: visible !important;
+        flex-direction: row !important;
         flex-wrap: wrap !important;
         justify-content: center !important;
         gap: 8px !important;
-        margin: 10px 0 !important;
+        margin: 15px 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
         order: 2;
     }
 
     .nav-links li a {
         display: inline-block !important;
         font-size: 0.8rem !important;
-        background: #f4f4f4;
+        background: #f4f4f4; /* Fundo cinza suave igual para todos */
         padding: 6px 12px;
         border-radius: 20px;
         color: #333 !important;
         border: 1px solid #ddd;
+        text-decoration: none;
+        transition: background 0.3s;
     }
 
-    /* CORREÇÃO DO VERMELHO: APENAS NO DÍZIMO/DOAÇÃO */
-    /* Se o link contiver a palavra 'doacao' ou 'dizimo' ele fica vermelho */
-    .nav-links li a[href*="doacao"], 
-    .nav-links li a[href*="dizimo"] {
-        background-color: #b22222 !important; 
-        color: #ffffff !important;
-        border: none !important;
-        font-weight: bold !important;
+    /* 3. ÍCONES SOCIAIS (INSTAGRAM/WHATSAPP) */
+    .nav-actions {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        margin-top: 10px !important;
+        order: 3;
     }
 
-    /* 3. CARROSSEL E CARDS (MANTENDO O QUE DEU CERTO) */
-    .carousel-container, .noticias-container, .grid-noticias, .destaques-igreja {
-        display: block !important;
+    .nav-actions a i {
+        font-size: 1.5rem !important;
+        color: #2c3e50;
+    }
+
+    /* 4. CARROSSEL E CARDS - SEM CORTES LATERAIS */
+    .carousel-container, 
+    .noticias-container, 
+    .grid-noticias, 
+    .destaques-igreja,
+    .cards-wrapper {
+        display: block !important; /* Força o empilhamento vertical */
         width: 100% !important;
     }
 
-    .carousel-item, .card, .item-noticia {
+    .carousel-item, 
+    .card, 
+    .item-noticia,
+    .item-destaque {
         display: block !important;
         width: 94% !important;
-        margin: 0 auto 20px auto !important;
+        margin: 0 auto 25px auto !important;
+        min-width: 94% !important;
     }
 
-    .carousel-item img, .card img, .item-noticia img {
+    /* Ajuste de Imagem dentro dos Cards */
+    .carousel-item img, 
+    .card img, 
+    .item-noticia img,
+    .item-destaque img {
         width: 100% !important;
         height: auto !important; 
         min-height: 200px;
         object-fit: cover !important;
         border-radius: 12px !important;
     }
+
+    /* 5. HERO E LOGO */
+    .hero { height: 35vh !important; }
+    .logo img { height: 65px !important; }
+
+    /* Efeito de clique nos botões para melhor experiência no celular */
+    .nav-links li a:active {
+        background-color: #e0e0e0;
+        transform: scale(0.98);
+    }
+}
+
+/* Ajuste para telas muito pequenas */
+@media (max-width: 480px) {
+    .nav-links { gap: 6px !important; }
+    .nav-links li a { font-size: 0.75rem !important; }
 }
