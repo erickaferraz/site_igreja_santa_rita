@@ -195,6 +195,13 @@ body {
     padding: 20px;
 }
 
+/* 6. RESPONSIVIDADE (Para Celular) */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Esconde menu no celular para simplificar */
+    .hero { height: 40vh; }
+    .container-flex { flex-direction: column; text-align: center; }
+}
+
 /* ==========================================================
    ESTILO GERAL PARA PÁGINAS INTERNAS
    ========================================================== */
@@ -317,6 +324,13 @@ body {
     background-color: #128c7e;
 }
 
+/* Ajuste para Celular */
+@media (max-width: 768px) {
+    .grade-contato {
+        grid-template-columns: 1fr; /* Uma coluna só no celular */
+    }
+}
+
 /* --- Destaques de Infraestrutura Casamento --- */
 .destaques-igreja {
     display: flex;
@@ -389,6 +403,12 @@ body {
 
 .status-ok { color: #28a745; font-weight: bold; }
 .status-alerta { color: #fd7e14; font-weight: bold; }
+
+/* --- Responsividade (Celular) --- */
+@media (max-width: 768px) {
+    .destaques-igreja { flex-direction: column; gap: 30px; }
+    .grade-casamento { grid-template-columns: 1fr; }
+}
 
 /* Página da Festa de Santa Rita - Estilo do Menu Recolhido (Accordion) */
 .historico-2025 {
@@ -1055,6 +1075,23 @@ summary {
     right: 10px;
 }
 
+/* Responsividade para o carrossel */
+@media (max-width: 768px) {
+    .carousel-item {
+        min-width: 50%; /* Dois itens por vez em tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        min-width: 100%; /* Um item por vez em celulares */
+    }
+    .carousel-btn {
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+}
+
 /* Estilização da Seção de Orientações */
 .orientacoes-batismo {
     max-width: 850px;
@@ -1182,6 +1219,16 @@ summary {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .btn-whatsapp-top span, .btn-dizimo-top {
+        display: none; /* Esconde o texto/botão dízimo no celular para caber tudo */
+    }
+    .btn-whatsapp-top {
+        padding: 8px;
+    }
+}
+
 /* Layout da Catequese */
 .grid-catequese {
     display: grid;
@@ -1254,79 +1301,10 @@ summary {
     background: white;
 }
 
-/* ==========================================================
-   REVISÃO ÚNICA DE RESPONSIVIDADE (Cole no final do arquivo)
-   ========================================================== */
-
+/* Responsividade */
 @media (max-width: 768px) {
-    /* 1. Navbar - Ajuste para não quebrar na rotação */
-    .navbar {
-        flex-direction: column; /* Empilha: Logo / Links / Botões */
-        padding: 10px 5%;
-        height: auto;
-    }
-
-    /* 2. Menu - Em vez de sumir, ele fica visível e organizado */
-    .nav-links { 
-        display: flex !important; /* Força a aparecer */
-        flex-direction: row; 
-        flex-wrap: wrap; /* Se não couber na largura, ele pula linha */
-        justify-content: center;
-        gap: 10px;
-        margin: 10px 0;
-        padding: 0;
-    }
-
-    .nav-links a {
-        font-size: 0.85rem;
-    }
-
-    /* 3. Botões do Topo - Limpeza visual */
-    .nav-actions {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .btn-whatsapp-top span, 
-    .btn-dizimo-top {
-        display: none !important; /* Esconde o texto/botão dízimo para ganhar espaço */
-    }
-
-    /* 4. Layout de Conteúdo - Coluna única */
-    .hero { height: 45vh; }
-    
-    .grid-catequese, 
-    .galeria-dupla, 
-    .grade-casamento, 
-    .grade-contato, 
-    .container-flex,
-    .destaques-igreja { 
-        display: flex;
-        flex-direction: column; 
+    .grid-catequese, .galeria-dupla {
         grid-template-columns: 1fr;
-        gap: 20px; 
-        text-align: center;
-    }
-
-    .item-destaque { margin-bottom: 20px; }
-
-    /* 5. Carrossel - 2 itens em tablets/celulares grandes */
-    .carousel-item {
-        min-width: 50%;
-    }
-}
-
-/* Ajuste fino para telas muito pequenas (iPhone antigo, etc) */
-@media (max-width: 480px) {
-    .nav-links {
-        gap: 8px;
-    }
-    
-    .carousel-item {
-        min-width: 100%; /* 1 item por vez */
-    }
-    
-    .logo img {
-        height: 60px; /* Reduz o logo no celular vertical */
+        flex-direction: column;
     }
 }
