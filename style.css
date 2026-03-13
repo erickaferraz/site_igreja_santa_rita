@@ -1355,3 +1355,119 @@ summary {
     .nav-links { gap: 6px !important; }
     .nav-links li a { font-size: 0.75rem !important; }
 }
+
+/* ==========================================================
+   ESTILIZAÇÃO DA AGENDA (CARDS MODERNOS)
+   ========================================================== */
+
+.pagina-agenda {
+    background-color: #fdfdfd;
+    padding: 40px 5%;
+}
+
+.intro-agenda {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 40px;
+    border-left: 4px solid #b22222; /* Vermelho Santa Rita */
+    padding-left: 15px;
+}
+
+/* Grade que organiza os cards */
+.grade-agenda {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+/* Estilo de cada Card de Dia */
+.dia-semana {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.dia-semana:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* Cabeçalho do Card */
+.cabecalho-dia {
+    background: #f8f9fa;
+    padding: 15px;
+    border-bottom: 3px solid #b22222; /* Linha vermelha característica */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cabecalho-dia h2 {
+    font-size: 1.2rem;
+    color: #0d1b2a;
+    margin: 0;
+}
+
+/* Lista de Eventos */
+.lista-eventos {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.lista-eventos li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #eee;
+}
+
+.lista-eventos li:last-child {
+    border-bottom: none;
+}
+
+/* Estilo da Hora */
+.hora {
+    font-weight: bold;
+    color: #b22222;
+    min-width: 65px;
+    font-size: 0.9rem;
+}
+
+/* Estilo do Texto do Evento */
+.evento {
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.evento small {
+    display: block;
+    color: #888;
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+/* DESTAQUE ESPECIAL: DIA 22 (Dourado Santa Rita) */
+.especial-22 {
+    border: 2px solid #d4af37 !important; /* Borda Dourada */
+    background-color: #fffdf5 !important;
+}
+
+.especial-22 .cabecalho-dia {
+    background: #fdf8e6;
+    border-bottom-color: #d4af37;
+}
+
+/* DESTAQUE PARA MISSAS */
+.evento-missa {
+    background: #fff5f5;
+    border-radius: 6px;
+    padding: 5px !important;
+}
