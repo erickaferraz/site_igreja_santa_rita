@@ -1471,3 +1471,145 @@ summary {
     border-radius: 6px;
     padding: 5px !important;
 }
+
+/* --- PAGINA SANTA RITA (CONSOLIDADO) --- */
+.pagina-santa {
+    padding: 60px 0;
+    background-color: #fdfdfd;
+}
+
+.titulo-pagina {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Container da Relíquia */
+.secao-reliquia {
+    max-width: 1000px;
+    margin: 0 auto 60px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.reliquia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Divide em duas colunas fixas no PC */
+    gap: 50px;
+    align-items: center; /* Alinha o texto no meio da altura da foto */
+}
+
+.reliquia-foto {
+    position: relative;
+    text-align: center;
+}
+
+.reliquia-foto img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.selo-autenticidade {
+    background: #b22222;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+/* Texto da Relíquia */
+.reliquia-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+.reliquia-texto h2 {
+    margin: 0 0 15px 0; /* Remove margens superiores */
+    color: #0d1b2a;
+    border-bottom: 3px solid #d4af37;
+    padding-bottom: 5px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.reliquia-texto p {
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 25px;
+}
+
+/* Caixa de Oração (Limpa e alinhada) */
+.caixa-oracao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #fdf8e6;
+    padding: 20px;
+    border-radius: 12px;
+    border: none !important; /* Força a remoção de linhas estranhas */
+}
+
+.caixa-oracao i {
+    font-size: 2rem;
+    color: #d4af37;
+}
+
+.texto-oracao p {
+    margin: 0 !important; /* Remove qualquer margem de parágrafo interna */
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.texto-oracao span {
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* Vídeo Imersivo */
+.secao-video {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 30px 0;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 850px) {
+    .reliquia-grid {
+        grid-template-columns: 1fr; /* No celular, vira uma coluna só */
+        text-align: center;
+        gap: 30px;
+    }
+    .reliquia-texto h2 {
+        margin: 0 auto 15px auto;
+    }
+    .caixa-oracao {
+        text-align: left;
+    }
+}
