@@ -1613,3 +1613,210 @@ summary {
         text-align: left;
     }
 }
+
+/* --- ESTILO DA PÁGINA DE EVENTOS --- */
+.titulo-sessao-generica {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 2px solid #d4af37;
+}
+
+.grid-eventos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.card-evento {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card-evento:hover {
+    transform: translateY(-8px);
+}
+
+/* --- AJUSTE PARA BANNER INTEIRO (SEM CORTES) --- */
+.banner-wrapper {
+    position: relative;
+    height: 300px; /* Aumentei um pouco a altura para cartazes verticais */
+    overflow: hidden;
+    background-color: #f4f4f4; /* Cor de fundo para preencher as laterais vazias */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto; /* Importante para não esticar */
+    height: auto; /* Importante para não esticar */
+    object-fit: contain; /* Mostra a imagem inteira, sem cortar */
+}
+
+.overlay-card {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #b22222;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.conteudo-evento {
+    padding: 20px;
+    text-align: center;
+}
+
+.btn-detalhes {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 25px;
+    background: #d4af37;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.em-breve {
+    background: #fdfdfd;
+    border: 2px dashed #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo-placeholder {
+    padding: 40px;
+    text-align: center;
+    color: #999;
+}
+
+.conteudo-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* --- PÁGINA RIFA CONSOLIDADA --- */
+.rifa-secao {
+    padding: 40px 5%;
+}
+
+.rifa-flex-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+    align-items: flex-start;
+}
+
+/* Coluna do Vídeo */
+.rifa-video-col {
+    flex: 1;
+    min-width: 320px;
+}
+
+.video-moldura-estavel {
+    width: 100%;
+    max-width: 380px; /* Mantém proporção de celular */
+    margin: 0 auto;
+    background-color: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    /* TRAVA A PROPORÇÃO PARA NÃO PULAR */
+    aspect-ratio: 9 / 16;
+}
+
+.video-moldura-estavel video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Coluna de Informações */
+.rifa-info-col {
+    flex: 1.2;
+    min-width: 320px;
+}
+
+.card-rifa {
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    border-left: 5px solid #d4af37;
+}
+
+.lista-infos {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+.lista-infos li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.lista-infos i {
+    color: #d4af37;
+    font-size: 1.3rem;
+    margin-right: 15px;
+    margin-top: 4px;
+}
+
+.btn-comprar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.btn-comprar.whatsapp {
+    background-color: #25d366;
+    color: white;
+}
+
+.btn-comprar.whatsapp:hover {
+    background-color: #1ebe57;
+    transform: translateY(-3px);
+}
+
+.mp-disabled {
+    background-color: #eee;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+    .rifa-flex-layout {
+        flex-direction: column;
+    }
+    
+    .video-moldura-estavel {
+        max-width: 100%;
+    }
+}
