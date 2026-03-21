@@ -41,11 +41,11 @@
         <div class="nav-actions">
             <a href="Dízimo.html" class="btn-dizimo-top">DÍZIMO</a>
 
-            <a href="https://www.instagram.com/ce.staritadecassia" target="_blank" class="icon-insta-top" title="Siga-nos no Instagram">
+            <a href="https://www.instagram.com/ce.staritadecassia" target="_blank" rel="noopener noreferrer" class="icon-insta-top" title="Siga-nos no Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
 
-            <a href="https://wa.me/5511953996121" target="_blank" class="btn-whatsapp-top">
+            <a href="https://wa.me/5511953996121" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-top">
                 <i class="fab fa-whatsapp"></i> <span>CONTATO</span>
             </a>
         </div>
@@ -148,8 +148,8 @@
     <footer>
         <p>&copy; 2026 Comunidade Santa Rita de Cássia. Todos os direitos reservados.</p>
         <div class="social-links">
-            <a href="https://www.facebook.com/santaritadecassia.barramansa.5" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/ce.staritadecassia" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/santaritadecassia.barramansa.5" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ce.staritadecassia" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
 
@@ -166,7 +166,7 @@
                 return;
             }
 
-            const mensagem = `Olá! Meu nome é *${nome}* (Tel: ${telefone}). %0A%0AGostaria de colaborar com a Comunidade Santa Rita com a seguinte doação: %0A_${obs}_`;
+            const mensagem = encodeURIComponent(`Olá! Meu nome é *${nome}* (Tel: ${telefone}).\n\nGostaria de colaborar com a Comunidade Santa Rita com a seguinte doação:\n_${obs}_`);
             const url = `https://wa.me/${numeroZap}?text=${mensagem}`;
             
             window.open(url, '_blank');
@@ -175,9 +175,15 @@
         // --- Função Copiar PIX ---
         function copiarPixDoacao() {
             const chave = document.getElementById("chave-pix-doacao").innerText;
-            navigator.clipboard.writeText(chave).then(() => {
-                alert("Chave PIX copiada com sucesso!");
-            });
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(chave).then(() => {
+                    alert("Chave PIX copiada com sucesso!");
+                }).catch(() => {
+                    alert("Erro ao copiar. Por favor, anote o número: " + chave);
+                });
+            } else {
+                alert("Erro ao copiar. Por favor, anote o número: " + chave);
+            }
         }
 
         // --- Carrossel ---

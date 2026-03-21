@@ -51,10 +51,10 @@ body {
 }
 
 .logo img {
-    height: 90px; /* Esse é o segredo! Trava a altura da imagem */
-    width: auto;  /* Mantém a proporção para a imagem não ficar achatada */
-    object-fit: contain; /* Garante que ela caiba certinho sem cortes */
-
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    border: none;
 }
 
 .nav-links {
@@ -234,13 +234,9 @@ body {
 /* colocando o clique no logo de Santa Rita para retornar ao home */
 
 .logo a {
-    text-decoration: none; /* Remove sublinhados indesejados */
-    display: flex;         /* Mantém o alinhamento correto com o texto */
+    text-decoration: none;
+    display: flex;
     align-items: center;
-}
-
-.logo img {
-    border: none;          /* Garante que não apareça borda no link */
 }
 
 /* Estilo da Tabela de Agenda */
@@ -300,23 +296,6 @@ body {
     color: #0d1b2a;
 }
 
-.btn-whatsapp {
-    display: inline-block;
-    background-color: #25d366;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 25px;
-    transition: transform 0.3s;
-}
-
-.btn-whatsapp:hover {
-    transform: scale(1.05);
-    background-color: #128c7e;
-}
-
 /* --- Destaques de Infraestrutura Casamento --- */
 .destaques-igreja {
     display: flex;
@@ -366,6 +345,12 @@ body {
 .form-box h3 { margin-bottom: 20px; color: #0d1b2a; }
 
 .form-box form { display: flex; flex-direction: column; gap: 15px; }
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 
 .form-box input, .form-box textarea {
     padding: 12px;
@@ -679,29 +664,6 @@ summary {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Sombra mais suave para destacar do fundo */
 }
 
-.lista-rosas {
-    list-style: none; /* Tira as bolinhas pretas */
-    padding: 0;
-    margin: 20px 0;   /* Dá um espaço em cima e embaixo da lista */
-}
-
-.lista-rosas li {
-    position: relative;
-    padding-left: 35px; /* Abre espaço para a rosa à esquerda */
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-    color: #444;       /* Cor suave para o texto */
-    display: flex;
-    align-items: center;
-}
-
-.lista-rosas li::before {
-    content: "🌹";      /* Símbolo da rosa */
-    position: absolute;
-    left: 0;
-    font-size: 1.2rem;
-}
-
 .pagina-dizimo {
     max-width: 800px;
     margin: 40px auto;
@@ -726,12 +688,6 @@ summary {
     line-height: 1.6;
 }
 
-.rosa-decorativa {
-    display: block;
-    margin-top: 15px;
-    font-size: 1.5rem;
-}
-
 /* Estilo da Área do PIX */
 .pix-dizimo {
     background: #fff;
@@ -741,6 +697,14 @@ summary {
 }
 
 .qr-code-box {
+    margin-top: 20px;
+}
+
+.qr-code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     margin-top: 20px;
 }
 
@@ -766,11 +730,6 @@ summary {
     font-size: 1.3rem;
     color: #b22222;
     display: block;
-}
-
-.instrucao {
-    font-size: 0.9rem;
-    color: #888;
 }
 
 /* Estilo da área de Copiar PIX */
@@ -983,13 +942,16 @@ summary {
     margin-bottom: 15px;
 }
 
-.carousel-container {
+.sonhos-comunidade .carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden; /* Esconde o que está fora da tela */
     margin: 30px auto;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    display: block;
+    gap: 0;
+    padding: 0;
 }
 
 .carousel-slide {
@@ -1081,7 +1043,7 @@ summary {
 .lista-rosas {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 .lista-rosas li {
@@ -1123,13 +1085,6 @@ summary {
 .btn-whatsapp:hover {
     background-color: #128c7e;
     transform: translateY(-3px);
-}
-
-/* --- Ajustes da Barra de Navegação --- */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
 }
 
 /* Botão de Dízimo */
@@ -1308,19 +1263,24 @@ summary {
     }
 
     /* 4. CARROSSEL E CARDS - SEM CORTES LATERAIS */
-    .carousel-container, 
-    .noticias-container, 
-    .grid-noticias, 
+    .noticias-container,
+    .grid-noticias,
     .destaques-igreja,
     .cards-wrapper {
         display: block !important; /* Força o empilhamento vertical */
         width: 100% !important;
     }
 
-    .carousel-item, 
-    .card, 
+    .card,
     .item-noticia,
     .item-destaque {
+        display: block !important;
+        width: 94% !important;
+        margin: 0 auto 25px auto !important;
+        min-width: 94% !important;
+    }
+
+    .sonhos-comunidade .carousel-item {
         display: block !important;
         width: 94% !important;
         margin: 0 auto 25px auto !important;
@@ -1347,6 +1307,19 @@ summary {
     .nav-links li a:active {
         background-color: #e0e0e0;
         transform: scale(0.98);
+    }
+
+    /* 6. GRIDS DE 2 COLUNAS - EMPILHAR NO CELULAR */
+    .grade-contato,
+    .grade-casamento,
+    .grid-catequese {
+        grid-template-columns: 1fr;
+    }
+
+    /* 7. PADDING SUPERIOR DAS PÁGINAS INTERNAS
+       No mobile a navbar cresce em altura — aumentamos o recuo */
+    .conteudo-pagina {
+        padding-top: 220px;
     }
 }
 
@@ -1639,6 +1612,12 @@ summary {
 
 .card-evento:hover {
     transform: translateY(-8px);
+}
+
+.link-evento {
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* --- AJUSTE PARA BANNER INTEIRO (SEM CORTES) --- */
