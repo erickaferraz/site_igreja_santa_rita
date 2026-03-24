@@ -112,7 +112,7 @@ body {
     height: 60vh; 
     
     /* Caminho da sua foto principal */
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('imagens/principal.jpeg');
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('imagens/velatio.jpeg');
     
     /* Ajustes para a foto não distorcer */
     background-size: cover;       /* Faz a foto preencher todo o espaço */
