@@ -6,6 +6,28 @@
     <title>Comunidade Santa Rita de Cássia | Agenda</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    /* ── Correções de rolagem mobile (agenda.html) ── */
+    @media (max-width: 768px) {
+        /* A navbar no mobile cresce ao quebrar os itens;
+           aumentamos o recuo para o conteúdo não ficar escondido atrás dela */
+        .conteudo-pagina {
+            padding-top: 340px !important;
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+        /* Habilita rolagem suave da tabela no iOS sem bloquear o scroll da página */
+        .tabela-responsiva {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+    @media (max-width: 480px) {
+        .conteudo-pagina {
+            padding-top: 380px !important;
+        }
+    }
+    </style>
 </head>
 <body>
 
