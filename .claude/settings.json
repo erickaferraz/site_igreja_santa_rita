@@ -4,7 +4,8 @@
       "Bash(xargs sed *)",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git commit *)"
     ],
     "additionalDirectories": [
       "c:\\Users\\SME\\OneDrive\\python_note\\st_website\\imagens\\patrocinador2026"
