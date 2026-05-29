@@ -146,13 +146,13 @@
 
     <style>
         .banner-iframe-wrap {
-            width: 70%;
+            width: 55%;
             overflow: hidden;
             position: relative;
         }
         #bannerFrame {
             width: 1650px;
-            height: 5500px;
+            height: 7000px;
             border: none;
             display: block;
             transform-origin: top left;
@@ -160,7 +160,7 @@
     </style>
 
     <script>
-        var alturaReal = 5500;
+        var alturaReal = 7000;
 
         function escalarBanner() {
             var frame = document.getElementById('bannerFrame');
@@ -172,10 +172,11 @@
 
         document.getElementById('bannerFrame').addEventListener('load', function() {
             try {
+                /* zoom:1.5 no banner faz o conteúdo visual ser 1.5× o scrollHeight */
                 var h = this.contentDocument.documentElement.scrollHeight;
                 if (h > 1000) {
-                    alturaReal = h;
-                    this.style.height = h + 'px';
+                    alturaReal = Math.round(h * 1.5) + 150;
+                    this.style.height = alturaReal + 'px';
                 }
             } catch(e) {}
             escalarBanner();
