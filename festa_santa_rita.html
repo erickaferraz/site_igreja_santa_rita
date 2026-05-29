@@ -172,19 +172,24 @@
 
         document.getElementById('bannerFrame').addEventListener('load', function() {
             var frame = this;
-            /* Expande o iframe para 10000px antes de ler, evitando que o iframe
-               limite artificialmente o scrollHeight reportado */
             frame.style.height = '10000px';
             setTimeout(function() {
                 try {
-                    var h = frame.contentDocument.documentElement.scrollHeight;
-                    if (h > 1000) {
-                        alturaReal = h + 80;
-                        frame.style.height = alturaReal + 'px';
+                    var doc = frame.contentDocument;
+                    /* Remove fundo escuro do banner quando embutido — espaço vazio fica transparente */
+                    doc.documentElement.style.background = 'transparent';
+                    doc.body.style.background = 'transparent';
+                    /* Mede pela bounding box do .banner (inclui zoom:1.5) */
+                    var el = doc.querySelector('.banner');
+                    if (el) {
+                        alturaReal = Math.round(el.getBoundingClientRect().bottom) + 60;
+                    } else {
+                        alturaReal = doc.documentElement.scrollHeight + 60;
                     }
+                    frame.style.height = alturaReal + 'px';
                 } catch(e) {}
                 escalarBanner();
-            }, 400);
+            }, 500);
         });
 
         window.addEventListener('resize', escalarBanner);
